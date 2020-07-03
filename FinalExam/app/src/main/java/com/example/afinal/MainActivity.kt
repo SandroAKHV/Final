@@ -2,8 +2,11 @@ package com.example.afinal
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,4 +47,27 @@ class MainActivity : AppCompatActivity() {
 
             })
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.sign_out, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+    private val mAuth: FirebaseAuth? = null
+    private lateinit var auth: FirebaseAuth
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        auth = FirebaseAuth.getInstance();
+
+        if (item.itemId == R.id.logout) {
+
+            auth.signOut()
+            finish()
+
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        auth.signOut()
+//    }
 }

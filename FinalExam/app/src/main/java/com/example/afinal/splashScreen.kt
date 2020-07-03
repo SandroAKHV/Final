@@ -14,9 +14,8 @@ class splashScreen : AppCompatActivity() {
         splash_logo.setImageResource(R.drawable.spalsh_logo)
 
         val SPLASH_TIME_OUT = 3000
-        val homeIntent = Intent(this@splashScreen, MainActivity::class.java)
+        val homeIntent = Intent(this@splashScreen, login::class.java)
         Handler().postDelayed({
-            //Do some stuff here, like implement deep linking
             startActivity(homeIntent)
             finish()
         }, SPLASH_TIME_OUT.toLong())
